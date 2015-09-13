@@ -1,12 +1,19 @@
-# bd-geo
-Scripts da aula de Banco de Dados Geográfico utilizando PostGIS
+# OSGeo
+Dicas e tutoriais para quem deseja aprender a trabalhar com Banco de Dados Geográfico Open Source. Neste projeto é utilizado PostGIS (extensão para o banco de dados PostgreSQL) e OpenJump (aplicativo visualizador e gerenciador de informações geográficas). Projeto iniciado no curso de Pós-graduação em Administração de Banco de Dados (Estácio/iDez), disciplina "Banco de Dados de Informações Geográficas" com o professor Eduardo Nóbrega.
 
-## Instruções de Instalação e importação de scripts
+## Leituras recomendadas
+ * PostGIS Documentation: http://postgis.net/documentation
+ * OSGeo (Open Source Geospatial Foundation): http://www.osgeo.org/
+
+## Primeiros passos
+ * Instruções de Instalação do PostGIS
+ * Criação do primeiro banco de dados
+ * Conversão e importação de ShapeFiles
 
 ### Adicionar extensões do PostGis
-  * No Windows será necessário apenas clicar com o botão direito do mouse em "extensions" e selecionar as extensões "postgis" e "postgis_topology"
-  * No Linux executar a instalação dos pacotes abaixo (já deve existir o PostgreSQL instalado)
-    * Instruções originais: https://trac.osgeo.org/postgis/wiki/UsersWikiPostGIS21Ubuntu1404src
+ * No Windows será necessário apenas clicar com o botão direito do mouse em "extensions" e selecionar as extensões "postgis" e "postgis_topology"
+ * No Linux executar a instalação dos pacotes abaixo (já deve existir o PostgreSQL instalado)
+  * Instruções originais: https://trac.osgeo.org/postgis/wiki/UsersWikiPostGIS21Ubuntu1404src
 
 ```shell
 sudo apt-get install build-essential libgeos-c1 libgdal-dev libproj-dev libjson0-dev libxml2-dev libxml2-utils xsltproc docbook-xsl docbook-mathml
@@ -49,9 +56,9 @@ CREATE EXTENSION postgis_topology;
 
 ### Download e conversão dos ShapeFiles 
 
-  * Download dos mapeamentos de João Pessoa http://geo.joaopessoa.pb.gov.br/digeoc/htmls/donwloads.html
-  * Gerar SQL a partir do ShapeFile (substituir "PATH" pelo caminho onde foi realizado download dos arquivos)
-    * No windows utilize o diretório "temp" ou o diretório "data" da instalação do PostgreSQL
+ * Download dos mapeamentos de João Pessoa http://geo.joaopessoa.pb.gov.br/digeoc/htmls/donwloads.html
+ * Gerar SQL a partir do ShapeFile (substituir "PATH" pelo caminho onde foi realizado download dos arquivos)
+  * No windows utilize o diretório "temp" ou o diretório "data" da instalação do PostgreSQL
 ```shell
 # PATH: diretório contendo o arquivo .SHP
 # SCHEMA: nome do schema onde a tabela com os dados do Shape será criada
@@ -59,7 +66,7 @@ CREATE EXTENSION postgis_topology;
 shp2pgsql -c -W "latin1" PATH\Bairros.shp SCHEMA.TABELA SCHEMA > PATH\NOME_DO_ARQUIVO.sql
 ```
 
-  * Neste projeto foram geradas as estruturas abaixo (ver diretórios "jampa" e "mundo")
+ * Neste projeto foram geradas as estruturas abaixo (ver diretórios "jampa" e "mundo")
 ```sql
 -- SCHEMA MUNDO
 mundo.pais; 
@@ -74,15 +81,5 @@ jampa.rio;
 jampa.setor;
 ```
 
-## Arquivos com Erro
-  * Hidrografia
-  * Limite Marítimo
-  * Quadra
-
 ## Exercício proposto
-  * Criar uma tabela chamada "lote_final" para armazenar infromações a respeito dos lotes abaixo
-
-## Leituras recomendadas
-  * PostGIS Documentation: http://postgis.net/documentation
-  * OSGeo (Open Source Geospatial Foundation): http://www.osgeo.org/
-  
+ * Criar uma tabela chamada "lote_final" para armazenar infromações a respeito dos lotes abaixo
