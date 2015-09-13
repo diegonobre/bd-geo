@@ -10,7 +10,7 @@ CREATE ROLE bdgeo LOGIN SUPERUSER CREATEDB PASSWORD 'bdgeo';
 ```sql
 CREATE DATABASE bdgeo OWNER bdgeo;
 ```
-### Adicionar extenções do PostGis
+### Adicionar extensões do PostGis
   * No Windows será necessário apenas clicar com o botão direito do mouse em "extensions" e selecionar as extensões abaixo
   * No Linux executar a instalação dos pacotes abaixo (já deve existir o PostgreSQL instalado)
     * Instruções originais: https://trac.osgeo.org/postgis/wiki/UsersWikiPostGIS21Ubuntu1404src
@@ -18,41 +18,31 @@ CREATE DATABASE bdgeo OWNER bdgeo;
 ```shell
 sudo apt-get install build-essential libgeos-c1 libgdal-dev libproj-dev libjson0-dev libxml2-dev libxml2-utils xsltproc docbook-xsl docbook-mathml
 
-echo 'Build'
+# Build com configuração básica
 wget http://download.osgeo.org/postgis/source/postgis-2.1.8.tar.gz
 tar xfz postgis-2.1.8.tar.gz
 cd postgis-2.1.8
 
-echo 'Configuração básica'
 ./configure
 make
 sudo make install
 sudo ldconfig
 sudo make comments-install
+
+# Criação de link simbólico para a instalação do PostgreSQL enxergar as novas extensões
+sudo ln -sf /usr/share/postgresql-common/pg_wrapper /usr/local/bin/shp2pgsql
+sudo ln -sf /usr/share/postgresql-common/pg_wrapper /usr/local/bin/pgsql2shp
+sudo ln -sf /usr/share/postgresql-common/pg_wrapper /usr/local/bin/raster2pgsql
 ```
 
 ### Verificar se as seguintes extensões existem:
 
 ```sql
--- DROP EXTENSION fuzzystrmatch;
- CREATE EXTENSION fuzzystrmatch
-  SCHEMA public
-  VERSION "1.0";
-
- -- DROP EXTENSION postgis;
- CREATE EXTENSION postgis
-  SCHEMA public
-  VERSION "2.1.7";
-
- -- DROP EXTENSION postgis_tiger_geocoder;
- CREATE EXTENSION postgis_tiger_geocoder
-  SCHEMA tiger
-  VERSION "2.1.7";
+-- DROP EXTENSION postgis;
+CREATE EXTENSION postgis;
 
 -- DROP EXTENSION postgis_topology;
- CREATE EXTENSION postgis_topology
-  SCHEMA topology
-  VERSION "2.1.7";
+CREATE EXTENSION postgis_topology;
 ```
 
 ### Download dos ShapeFiles http://geo.joaopessoa.pb.gov.br/digeoc/htmls/donwloads.html
