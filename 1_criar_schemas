@@ -1,8 +1,0 @@
--- criando schemas
-CREATE SCHEMA jampa AUTHORIZATION bdgeo;
-GRANT ALL ON SCHEMA jampa TO bdgeo;
-COMMENT ON SCHEMA jampa IS 'Schema padrão para importação dos dados de João Pessoa';
-
-CREATE SCHEMA mundo AUTHORIZATION bdgeo;
-GRANT ALL ON SCHEMA mundo TO bdgeo;
-COMMENT ON SCHEMA mundo IS 'Mapas do mundo, países, rios, estradas, etc...';
