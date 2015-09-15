@@ -1,13 +1,13 @@
-Projeto
-REGRAS:
-- Grupo de 2 
-- Vale nota de 0 - 10
-- Data de Entrega: 24/09/2015
-- Não entregar o trabalho significa nota 0
+# Projeto
+## REGRAS:
+ - Grupo de 2 
+ - Vale nota de 0 - 10
+ - Data de Entrega: 24/09/2015
+ - Não entregar o trabalho significa nota 0
 
 
-- Utilizando a base de dados de João Pessoa:
-1) Criar um documento descrevendo o objetivo, codigo SQL e o resultado das consultas (No caso das consultas que são rederizadas no OpenJump, tirar um screenshot).
+## Utilizando a base de dados de João Pessoa:
+ 1) Criar um documento descrevendo o objetivo, codigo SQL e o resultado das consultas (No caso das consultas que são rederizadas no OpenJump, tirar um screenshot).
   1.1) O documento devera conter 15 consultas utilizando pelo menos 10 dos operadores abaixo: 
   1.2) Deverão ser utilizadas pelo menos 5 tabelas deferentes nas consultas.
 
